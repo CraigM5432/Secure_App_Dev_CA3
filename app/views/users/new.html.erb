@@ -1,0 +1,22 @@
+<h1>Register (Insecure!)</h1>
+
+<form action="/users" method="post">
+  <!-- No CSRF -->
+
+  <label>Email</label><br>
+  <input type="text" name="user[email]"><br><br>
+
+  <label>Password (stored in plain-text!)</label><br>
+  <input type="password" name="user[password]"><br><br>
+
+  <label>Display Name</label><br>
+  <input type="text" name="user[display_name]"><br><br>
+
+  <!-- Attacker can assign their role -->
+  <label>Role (insecure)</label><br>
+  <input type="text" name="user[role]" value="user"><br><br>
+
+  <button type="submit">Register</button>
+  <a href="/posts">Back to Posts</a>
+</form>
+

@@ -1,0 +1,10 @@
+<h1>User Profile (Insecure)</h1>
+
+<!-- Exposing sensitive user information -->
+<p>Email: <%= raw @user.email %></p>
+<p>Password (password in plain text): <%= raw @user.password %></p>
+<p>Display Name: <%= raw @user.display_name %></p>
+<p>Role: <%= raw @user.role %></p>
+
+<a href="/">Back to Home</a>
+<a href="/posts">Back to Posts</a>

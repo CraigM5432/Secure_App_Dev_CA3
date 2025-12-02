@@ -1,0 +1,82 @@
+<h1>ADMIN DASHBOARD (Insecure!)</h1>
+
+<p style="color:red;">
+  This page is intentionally insecure.
+</p>
+
+<hr>
+
+<h2>Users</h2>
+<table border="1" cellpadding="5">
+  <tr>
+    <th>ID</th>
+    <th>Email</th>
+    <th>Password (Password displayed in plain text)</th>
+    <th>Role</th>
+    <th>Actions</th>
+  </tr>
+
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= raw user.email %></td>
+      <td><%= raw user.password %></td>
+      <td><%= raw user.role %></td>
+
+      <td>
+        <a href="/admin/delete_user/<%= user.id %>">DELETE USER</a>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<hr>
+
+<h2>Posts</h2>
+<table border="1" cellpadding="5">
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Body</th>
+    <th>User ID</th>
+    <th>Actions</th>
+  </tr>
+
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.id %></td>
+      <td><%= raw post.title %></td>
+      <td><%= raw post.body %></td>
+      <td><%= post.user_id %></td>
+
+      <td><a href="/admin/delete_post/<%= post.id %>">DELETE POST</a></td>
+    </tr>
+  <% end %>
+</table>
+
+<hr>
+
+<h2>Comments</h2>
+<table border="1" cellpadding="5">
+  <tr>
+    <th>ID</th>
+    <th>Body</th>
+    <th>Post ID</th>
+    <th>User ID</th>
+    <th>Actions</th>
+  </tr>
+
+  <% @comments.each do |comment| %>
+    <tr>
+      <td><%= comment.id %></td>
+      <td><%= raw comment.body %></td>
+      <td><%= comment.post_id %></td>
+      <td><%= comment.user_id %></td>
+
+      <td>
+        <a href="/admin/delete_comment/<%= comment.id %>">DELETE COMMENT</a>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<a href="/posts">Back to Posts</a>

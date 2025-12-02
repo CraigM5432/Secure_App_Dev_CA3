@@ -1,0 +1,17 @@
+<h1>Edit Post (insecure)</h1>
+
+<form action="/posts/<%= @post.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+
+  <label>Title</label><br>
+  <input type="text" name="post[title]" value="<%= raw @post.title %>"><br><br>
+
+  <label>Body</label><br>
+  <textarea name="post[body]"><%= raw @post.body %></textarea><br><br>
+
+  <label>User ID</label><br>
+  <input type="text" name="post[user_id]" value="<%= @post.user_id %>"><br><br>
+
+  <button type="submit">Save Changes</button>
+  <a href="/posts">Back to Posts</a>
+</form>
