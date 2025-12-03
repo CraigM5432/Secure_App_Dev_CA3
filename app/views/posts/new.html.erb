@@ -1,0 +1,33 @@
+<h1>Create a New Post</h1>
+
+<%= form_with(model: @post, local: true) do |form| %>
+
+  <% if @post.errors.any? %>
+    <div class="errors">
+      <h3><%= pluralize(@post.errors.count, "error") %> prevented this post from being saved:</h3>
+      <ul>
+        <% @post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </div>
+
+  <div>
+    <%= form.submit "Create Post" %>
+  </div>
+
+<% end %>
+
+<br>
+<%= link_to "Back to Posts", posts_path %>

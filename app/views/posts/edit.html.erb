@@ -1,0 +1,29 @@
+<h1>Edit Post</h1>
+
+<%= form_with model: @post, local: true do |form| %>
+
+  <% if @post.errors.any? %>
+    <ul style="color:red;">
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+
+  <p>
+    <%= form.submit "Save Changes" %>
+  </p>
+
+<% end %>
+
+<p><%= link_to "Back to Post", @post %></p>

@@ -1,0 +1,20 @@
+<h1>Posts</h1>
+
+<% if logged_in? %>
+  <p>Welcome, <%= current_user.display_name %>!</p>
+
+  <%= link_to "Create New Post", new_post_path %> |
+
+<% else %>
+  <%= link_to "Login", login_path %> |
+  <%= link_to "Register", new_user_path %>
+<% end %>
+
+<hr>
+
+<% @posts.each do |post| %>
+  <h2><%= link_to post.title, post_path(post) %></h2>
+  <p><%= truncate(post.body, length: 150) %></p>
+  <p><i>By <%= post.user.display_name %></i></p>
+  <hr>
+<% end %>

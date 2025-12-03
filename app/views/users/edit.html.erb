@@ -1,0 +1,41 @@
+<h1>Edit Profile</h1>
+
+<%= form_with model: @user, local: true do |form| %>
+
+  <% if @user.errors.any? %>
+    <ul style="color:red;">
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <p>
+    <%= form.label :email %><br>
+    <%= form.email_field :email %>
+  </p>
+
+  <p>
+    <%= form.label :password %> (leave blank to keep current password)<br>
+    <%= form.password_field :password %>
+  </p>
+
+  <p>
+    <%= form.label :password_confirmation %><br>
+    <%= form.password_field :password_confirmation %>
+  </p>
+
+  <p>
+    <%= form.label :display_name %><br>
+    <%= form.text_field :display_name %>
+  </p>
+
+  <p>
+    <%= form.submit "Save Changes" %>
+  </p>
+
+<% end %>
+
+<p>
+  <%= link_to "Back to Profile", @user %>
+</p>

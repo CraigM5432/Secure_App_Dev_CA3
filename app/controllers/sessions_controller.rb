@@ -1,0 +1,23 @@
+class SessionsController < ApplicationController
+
+  def new
+  end
+
+  def create
+    user = User.authenticate(params[:email], params[:password])
+
+    if user
+      session[:user_id] = user.id
+      redirect_to root_path, notice: "Logged in successfully."
+    else
+      flash.now[:alert] = "Invalid email or password."
+      render :new, status: :unauthorized
+    end
+  end
+
+  def destroy
+    session.delete(:user_id)
+    redirect_to login_path, notice: "Logged out."
+  end
+end
+
