@@ -1,5 +1,4 @@
-class Post < ApplicationRecord
-#No validations and allows XSS payloads 
+class Post < ApplicationRecord 
 
 belongs_to :user
 has_many :comments
